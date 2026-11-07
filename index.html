@@ -2,352 +2,135 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AgroChain Technologies | Supply Chain Traceability & Blockchain</title>
-<meta name="description" content="AgroChain Technologies: end-to-end traceability and supply chain digitalization for agriculture and food — from raw materials to the consumer, powered by Ethereum blockchain.">
-<link rel="canonical" href="https://agrochaintech.com/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://agrochaintech.com/">
-<meta property="og:title" content="AgroChain Technologies | Supply Chain Traceability">
-<meta property="og:description" content="End-to-end traceability for agriculture and food supply chains, powered by blockchain.">
-<meta property="og:image" content="https://agrochaintech.com/img/farmer-tablet.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="/img/logo-agrochain.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"AgroChain Technologies","url":"https://agrochaintech.com/","logo":"https://agrochaintech.com/img/logo-agrochain.png","description":"End-to-end traceability and supply chain digitalization for agriculture and food, powered by Ethereum blockchain.","areaServed":"Worldwide"}
-</script>
-<style>
-:root{--bg:#1f2122;--bg2:#2a2c2d;--card:#323536;--text:#eceeee;--muted:#a9afb1;--accent:#8bc34a;--accent2:#e53935;--line:#3d4142}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Montserrat,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-weight:300}
-img{max-width:100%;display:block}
-a{color:inherit}
-html[lang=es] .en, html[lang=en] .es{display:none!important}
-.wrap{max-width:1150px;margin:0 auto;padding:0 20px}
-header{position:sticky;top:0;z-index:50;background:rgba(31,33,34,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
-.nav img{height:44px;width:auto}
-.nav ul{display:flex;gap:26px;list-style:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
-.nav ul a{text-decoration:none;color:var(--muted)}
-.nav ul a:hover{color:var(--text)}
-.langbtn{background:none;border:1px solid var(--line);color:var(--text);border-radius:999px;padding:6px 14px;font:600 12px Montserrat;letter-spacing:.1em;cursor:pointer}
-.menu-toggle{display:none;background:none;border:0;color:var(--text);font-size:26px;cursor:pointer}
-.hero{position:relative;min-height:78vh;display:flex;align-items:center;background:linear-gradient(90deg,rgba(20,22,23,.92) 0%,rgba(20,22,23,.65) 55%,rgba(20,22,23,.25) 100%),url(img/farmer-tablet.jpg) center/cover}
-.hero h1{font-size:clamp(30px,5vw,54px);line-height:1.12;font-weight:600;max-width:720px;text-transform:uppercase;letter-spacing:.02em}
-.hero h1 span{color:var(--accent)}
-.hero p{max-width:620px;margin-top:18px;color:#d7dbdc;font-size:18px}
-.btn{display:inline-block;margin-top:28px;background:var(--accent);color:#14210a;font-weight:600;text-decoration:none;padding:14px 28px;border-radius:999px;letter-spacing:.04em}
-.btn.ghost{background:none;color:var(--text);border:1px solid #ffffff55;margin-left:10px}
-section{padding:90px 0}
-.alt{background:var(--bg2)}
-.label{color:var(--accent);font-size:12px;letter-spacing:.25em;text-transform:uppercase;font-weight:600}
-h2{font-size:clamp(26px,3.4vw,38px);font-weight:600;line-height:1.2;margin:10px 0 18px;text-transform:uppercase;letter-spacing:.02em}
-h3{font-size:18px;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}
-.lead{color:var(--muted);font-size:17px;max-width:820px}
-.grid2{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
-.card ul{list-style:none;margin-top:10px}
-.card li{padding:5px 0 5px 22px;position:relative;color:#cfd4d5;font-size:15px}
-.card li:before{content:"";position:absolute;left:0;top:13px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
-.card p{color:#cfd4d5;font-size:15px}
-.icon{width:46px;height:46px;border-radius:12px;background:#8bc34a22;color:var(--accent);display:grid;place-items:center;font-size:22px;margin-bottom:14px}
-.equation{font-size:22px;font-weight:600;margin:26px 0 8px;color:var(--accent)}
-.stack img{border-radius:14px;margin-bottom:16px}
-.diagram{background:#fff;border-radius:14px;padding:18px;margin-top:40px}
-.projects .item{border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
-.projects img{height:210px;width:100%;object-fit:cover}
-.projects .cap{padding:16px 18px}
-.projects .cap b{display:block;font-weight:600}
-.projects .cap span{color:var(--muted);font-size:14px}
-.band{background:linear-gradient(rgba(20,22,23,.75),rgba(20,22,23,.75)),url(img/aerial-fields.jpg) center/cover;text-align:center}
-.band blockquote{font-size:clamp(22px,3vw,32px);font-weight:500;max-width:860px;margin:0 auto}
-.values li{font-size:16px}
-.posts .item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.posts img{height:170px;width:100%;object-fit:cover}
-.posts .cap{padding:18px}
-.posts .cap small{color:var(--accent);font-weight:600;letter-spacing:.1em}
-.posts .cap h3{font-size:15px;margin:8px 0;text-transform:none;letter-spacing:0}
-.posts .cap p{color:var(--muted);font-size:14px}
-.partners{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:center;margin-top:30px}
-.partners div{background:#fff;border-radius:12px;width:170px;height:96px;display:grid;place-items:center;padding:14px}
-.partners img{max-height:68px;width:auto;object-fit:contain}
-.contact{text-align:center}
-.contact .btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:10px}
-footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:13px}
-footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-footer img{height:38px;width:auto}
-@media (max-width:900px){
- .grid2,.grid3,.grid4{grid-template-columns:1fr}
- .nav ul{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px;border-bottom:1px solid var(--line)}
- .nav ul.open{display:flex}
- .menu-toggle{display:block}
- section{padding:64px 0}
- .btn.ghost{margin-left:0}
-}
-</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AgroChain Technologies | Traceability & Supply Chain Digitalization</title>
+<meta name="description" content="AgroChain Technologies: end-to-end traceability and supply chain digitalization with Blockchain — the Smart Supply Chain (SSC) platform.">
+<link rel="canonical" href="https://www.agrochaintech.com/">
+<meta property="og:title" content="AgroChain Technologies | Traceability & Supply Chain Digitalization">
+<meta property="og:description" content="AgroChain Technologies: end-to-end traceability and supply chain digitalization with Blockchain — the Smart Supply Chain (SSC) platform.">
+<meta property="og:image" content="https://www.agrochaintech.com/img/video-poster.jpg">
+<meta property="og:url" content="https://www.agrochaintech.com/">
+<meta name="theme-color" content="#2a2a2a">
+<link rel="icon" href="/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=5">
+<script>(function(){var l;try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('agro-lang')}catch(e){}if(!l)l=(navigator.language||'en').slice(0,2)==='es'?'es':'en';document.documentElement.lang=l==='es'?'es':'en';window.__T={en:"AgroChain Technologies | Traceability & Supply Chain Digitalization",es:"AgroChain Technologies | Trazabilidad y Digitalizaci\u00f3n de la Cadena de Suministro"};if(l==='es')document.title=__T.es})();</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "AgroChain Technologies", "url": "https://www.agrochaintech.com/", "logo": "https://www.agrochaintech.com/img/logo-agrochain.png", "email": "gonzalezjorge72@yahoo.com", "description": "AgroChain Technologies: end-to-end traceability and supply chain digitalization with Blockchain — the Smart Supply Chain (SSC) platform."}</script>
 </head>
 <body>
-<header>
- <div class="wrap nav">
-  <a href="#home"><img src="img/logo-agrochain.png" alt="AgroChain Technologies logo" width="114" height="48"></a>
-  <ul id="menu">
-   <li><a href="#home"><span class="en">Home</span><span class="es">Inicio</span></a></li>
-   <li><a href="#platform"><span class="en">Platform</span><span class="es">Plataforma</span></a></li>
-   <li><a href="#about"><span class="en">About us</span><span class="es">Nosotros</span></a></li>
-   <li><a href="#technology"><span class="en">Technology</span><span class="es">Tecnología</span></a></li>
-   <li><a href="#insights"><span class="en">Insights</span><span class="es">Artículos</span></a></li>
-   <li><a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a></li>
-  </ul>
-  <div style="display:flex;gap:10px;align-items:center">
-   <button class="langbtn" id="langbtn" aria-label="Change language">ES</button>
-   <button class="menu-toggle" id="menubtn" aria-label="Menu">&#9776;</button>
+<header class="top">
+  <div class="langs" role="group" aria-label="Language">
+    <button type="button" data-lang="en"><svg viewBox="0 0 20 20" aria-hidden="true"><clipPath id="c1"><circle cx="10" cy="10" r="10"/></clipPath><g clip-path="url(#c1)"><rect width="20" height="20" fill="#fff"/><g fill="#d22"><rect y="0" width="20" height="1.6"/><rect y="3" width="20" height="1.6"/><rect y="6" width="20" height="1.6"/><rect y="9" width="20" height="1.6"/><rect y="12" width="20" height="1.6"/><rect y="15" width="20" height="1.6"/><rect y="18" width="20" height="1.6"/></g><rect width="10" height="10" fill="#2b4aa0"/></g></svg>English</button>
+    <button type="button" data-lang="es"><svg viewBox="0 0 20 20" aria-hidden="true"><clipPath id="c2"><circle cx="10" cy="10" r="10"/></clipPath><g clip-path="url(#c2)"><rect width="20" height="20" fill="#c60b1e"/><rect y="5" width="20" height="10" fill="#ffc400"/></g></svg>Español</button>
   </div>
- </div>
+  <div class="wrap"><a class="logo" href="/" aria-label="AgroChain Technologies"><img src="/img/logo-agrochain.png" alt="AgroChain Technologies" width="340" height="143"></a></div>
 </header>
-
 <main>
-<section class="hero" id="home">
- <div class="wrap">
-  <h1><span class="en">Traceability technologies and <span>supply chain digitalization</span></span><span class="es">Tecnologías de trazabilidad y <span>digitalización de la cadena de suministro</span></span></h1>
-  <p class="en">True end-to-end traceability for agriculture and food — from raw materials to the consumer — powered by Ethereum blockchain.</p>
-  <p class="es">Trazabilidad real de punta a punta para la agricultura y los alimentos — desde la materia prima hasta el consumidor — con tecnología blockchain de Ethereum.</p>
-  <a class="btn" href="#platform"><span class="en">Discover the platform</span><span class="es">Conoce la plataforma</span></a>
-  <a class="btn ghost" href="#contact"><span class="en">Contact us</span><span class="es">Contáctanos</span></a>
- </div>
+
+<section class="presenter" aria-label="Video">
+  <video controls playsinline preload="metadata" poster="/img/video-poster.jpg" width="667" height="376">
+    <source src="/video/agrochain-presentacion.mp4" type="video/mp4">
+  </video>
 </section>
 
-<section id="intro">
- <div class="wrap grid2">
-  <div>
-   <span class="label en">Who we are</span><span class="label es">Quiénes somos</span>
-   <div class="en">
-    <h2>From inspection systems to smart supply chains</h2>
-    <p class="lead">AgroChain initially used its expertise in optics, electronics and computing to design custom manufacturing solutions. Our project began developing advanced inspection systems to verify the quality of agricultural products and packaging, helping the agroindustry comply with serialization regulations through innovative traceability solutions.</p>
-    <p class="lead" style="margin-top:14px">Today AgroChain offers true end-to-end traceability, providing granular data at every step of the supply chain. Through serialization and digitization, AgroChain connects all the players in the supply chain and provides unparalleled visibility, giving any company, anywhere, the tools to make real-time decisions based on reliable, actionable data.</p>
-    <p class="lead" style="margin-top:14px">Our goal is to build a sustainable world through the Smart Supply Chain (SSC): tracing product origin, ensuring fair trade and sustainable sourcing, optimizing efficiency, reducing waste and increasing customer engagement. AgroChain uses Ethereum blockchain technology to ensure a secure, electronic transmission of data.</p>
-   </div>
-   <div class="es">
-    <h2>De sistemas de inspección a cadenas de suministro inteligentes</h2>
-    <p class="lead">AgroChain comenzó usando su experiencia en óptica, electrónica y computación para diseñar soluciones de manufactura a la medida. Nuestro proyecto empezó desarrollando sistemas avanzados de inspección para verificar la calidad de productos agrícolas y empaques, ayudando a la agroindustria a cumplir las normas de serialización con soluciones innovadoras de trazabilidad.</p>
-    <p class="lead" style="margin-top:14px">Hoy AgroChain ofrece trazabilidad real de punta a punta, con datos detallados en cada paso de la cadena de suministro. Mediante la serialización y la digitalización, conectamos a todos los actores de la cadena y damos una visibilidad sin precedentes, para que cualquier empresa, en cualquier lugar, tome decisiones en tiempo real basadas en datos confiables.</p>
-    <p class="lead" style="margin-top:14px">Nuestra meta es construir un mundo sostenible con la Smart Supply Chain (SSC): rastrear el origen de los productos, asegurar el comercio justo y el abastecimiento sostenible, optimizar la eficiencia, reducir el desperdicio y aumentar la conexión con el consumidor. AgroChain usa blockchain de Ethereum para transmitir los datos de forma segura.</p>
-   </div>
-   <div class="equation">Supply Chain + Blockchain = <span class="en">Success</span><span class="es">Éxito</span></div>
+<section class="intro">
+  <div class="txt">
+    <h1 class="h-thin"><span class="en" lang="en">Traceability technologies and supply chain digitalization</span><span class="es" lang="es">Tecnologías de trazabilidad y digitalización de la cadena de suministro</span></h1>
+    <div class="p-block"><div class="en" lang="en"><p>AgroChain initially used its expertise in optics, electronics and computing to design custom manufacturing solutions.</p><p>Our project began developing advanced inspections systems to verify the quality of agricultural products and packaging. AgroChain helped the agroindustry comply with serialization regulations through innovative traceability solutions.</p><p>Today AgroChain has the ability to offer true end to end traceability, providing granular data at every step of the supply chain. From raw materials to the consumer. Through serialization and digitization, AgroChain connects all the players in the supply chain and provides unparalleled visibility, giving any company, anywhere, the tools to make real-time decisions based on reliable, actionable data.</p><p>AgroChain’s goal is to build a sustainable world through the Smart Supply Chain (SSC), harnessing the power of traceability to trace product origin, ensure fair trade and sustainable sourcing, optimize efficiency, reduce waste, increase customer engagement and much more as the key to a life-cycle analysis.</p><p>AgroChain’s true end to end traceability uses Ethereum Blockchain technology to ensure a secure and electronic transmission of data. It digitizes the entire supply chain, providing critical data at every step, making everyone’s business run better. Now imagine what the SSC can do for you.</p></div><div class="es" lang="es"><p>AgroChain utilizó inicialmente su experiencia en óptica, electrónica e informática para diseñar soluciones de fabricación personalizadas.</p><p>Nuestro proyecto comenzó desarrollando sistemas de inspección avanzados para verificar la calidad de los productos y empaques agrícolas. AgroChain ayudó a la agroindustria a cumplir con las normas de serialización a través de soluciones innovadoras de trazabilidad.</p><p>Hoy, AgroChain tiene la capacidad de ofrecer una verdadera trazabilidad de extremo a extremo, proporcionando datos granulares en cada paso de la cadena de suministro. De la materia prima al consumidor. A través de la serialización y la digitalización, AgroChain conecta a todos los actores de la cadena de suministro y brinda una visibilidad sin igual, brindando a cualquier empresa, en cualquier lugar, las herramientas para tomar decisiones en tiempo real basadas en datos confiables y procesables.</p><p>El objetivo de AgroChain es construir un mundo sostenible a través de la cadena de suministro inteligente (SSC), aprovechando el poder de la trazabilidad para rastrear el origen del producto, garantizar el comercio justo y el abastecimiento sostenible, optimizar la eficiencia, reducir el desperdicio, aumentar la participación del cliente y mucho más. Como la clave para el análisis del ciclo de vida.</p><p>La trazabilidad real y de extremo a extremo de AgroChain utiliza la tecnología blockchain para garantizar una transmisión de datos segura y electrónica. Digitaliza toda la cadena de suministro, proporcionando datos críticos en cada paso, haciendo que el negocio de todos funcione mejor. Ahora, imagine lo que el SSC puede hacer por usted.</p></div></div>
   </div>
-  <div class="stack">
-   <img src="img/supply-chain.jpg" alt="Supply chain management concept" loading="lazy" width="1089" height="782">
+  <div class="visual">
+    <video class="bgv" src="/video/fibra-loop.mp4" poster="/img/fibra-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+    <div class="collage">
+      <div class="eq"><span class="en" lang="en">Supply Chain + Blockchain = Success</span><span class="es" lang="es">Cadena de Suministro + Blockchain = Éxito</span></div>
+      <img class="c1" src="/img/supply-chain.jpg" alt="Supply chain management" loading="lazy">
+      <img class="c2" src="/img/farmer-tablet.jpg" alt="Farmer using a tablet in the field" loading="lazy">
+      <img class="c3" src="/img/platform-devices.jpg" alt="AgroChain platform on devices" loading="lazy">
+      <img class="c4" src="/img/blockchain.jpg" alt="Blockchain technology" loading="lazy">
+    </div>
   </div>
- </div>
 </section>
 
-<section class="alt" id="platform">
- <div class="wrap">
-  <span class="label en">AgroChain's Smart Supply Chain</span><span class="label es">Smart Supply Chain de AgroChain</span>
-  <h2><span class="en">Digital traceability platform</span><span class="es">Plataforma digital de trazabilidad</span></h2>
-  <div class="grid3" style="margin-top:30px">
-   <div class="card"><div class="icon">&#127793;</div>
-    <h3><span class="en">Raw materials</span><span class="es">Materias primas</span></h3>
-    <p class="en">Traceability from farm to manufacturing for:</p><p class="es">Trazabilidad desde la finca hasta la manufactura para:</p>
-    <ul class="en"><li>Increased transparency</li><li>Secure supplies</li><li>Easier outbreak and recall investigation</li><li>Improved sustainable practices</li><li>Agricultural data digitization and analytics</li><li>Real-time visibility and alerts</li><li>Responsible sourcing</li></ul>
-    <ul class="es"><li>Mayor transparencia</li><li>Suministros seguros</li><li>Investigación más fácil de brotes y retiros</li><li>Mejores prácticas sostenibles</li><li>Digitalización y análisis de datos agrícolas</li><li>Visibilidad y alertas en tiempo real</li><li>Abastecimiento responsable</li></ul>
-   </div>
-   <div class="card"><div class="icon">&#127981;</div>
-    <h3><span class="en">Manufacturing</span><span class="es">Manufactura</span></h3>
-    <p class="en">Supply chain traceability and operational intelligence for:</p><p class="es">Trazabilidad e inteligencia operativa para:</p>
-    <ul class="en"><li>Optimized reusable packaging management</li><li>Inventory level and location tracking</li><li>Increased production efficiency</li><li>Product quality inspection</li><li>Reduced environmental impact</li></ul>
-    <ul class="es"><li>Gestión optimizada de empaques reutilizables</li><li>Seguimiento de niveles y ubicación de inventario</li><li>Mayor eficiencia de producción</li><li>Inspección de calidad del producto</li><li>Menor impacto ambiental</li></ul>
-   </div>
-   <div class="card"><div class="icon">&#128722;</div>
-    <h3><span class="en">Consumption</span><span class="es">Consumo</span></h3>
-    <p class="en">Connect with the final consumer or user to:</p><p class="es">Conecta con el consumidor final para:</p>
-    <ul class="en"><li>Prevent fraud and build trust</li><li>Engage with your consumer</li><li>Obtain market insights and analytics</li><li>Ensure freshness and quality produce</li></ul>
-    <ul class="es"><li>Prevenir fraudes y generar confianza</li><li>Conectar con tu consumidor</li><li>Obtener información y análisis del mercado</li><li>Asegurar frescura y calidad</li></ul>
-   </div>
+<section class="platform">
+  <h2><span class="en" lang="en">AgroChain’s Smart Supply Chain</span><span class="es" lang="es">CADENA DE SUMINISTRO INTELIGENTE de AgroChain</span><b><span class="en" lang="en">Digital traceability platform</span><span class="es" lang="es">Plataforma de trazabilidad digital</span></b></h2>
+  <div class="cols3">
+    <div class="col"><img src="/img/icon-farmer.png" alt="" loading="lazy"><h3><span class="en" lang="en">Raw Materials</span><span class="es" lang="es">Materias primas</span></h3>
+      <p class="lead"><span class="en" lang="en">Traceability from farm to manufacturing for:</span><span class="es" lang="es">Trazabilidad desde la granja hasta la fabricación para:</span></p><ul><li><span class="en" lang="en">Increased transparency.</span><span class="es" lang="es">Mayor transparencia</span></li><li><span class="en" lang="en">Secure supplies.</span><span class="es" lang="es">Suministros seguros</span></li><li><span class="en" lang="en">Easier outbreak and recall investigation.</span><span class="es" lang="es">Investigación más fácil de brotes y retiradas</span></li><li><span class="en" lang="en">Improved sustainable practices.</span><span class="es" lang="es">Prácticas sostenibles mejoradas</span></li><li><span class="en" lang="en">Agricultural data digitization and analytics.</span><span class="es" lang="es">Digitalización y análisis de datos agrícolas</span></li><li><span class="en" lang="en">Real-time visibility and alerts.</span><span class="es" lang="es">Visibilidad y alertas en tiempo real</span></li><li><span class="en" lang="en">Responsible sourcing.</span><span class="es" lang="es">Abastecimiento responsable</span></li></ul></div>
+    <div class="arrow"><img src="/img/icon-arrow.png" alt="" loading="lazy"></div>
+    <div class="col"><img src="/img/icon-factory.png" alt="" loading="lazy"><h3><span class="en" lang="en">Manufacturing</span><span class="es" lang="es">Fabricación</span></h3>
+      <p class="lead"><span class="en" lang="en">Supply chain traceability and operational intelligence for:</span><span class="es" lang="es">Trazabilidad de la cadena de suministro e inteligencia operativa para:</span></p><ul><li><span class="en" lang="en">Optimized reusable packaging management.</span><span class="es" lang="es">Gestión optimizada de envases reutilizables</span></li><li><span class="en" lang="en">Inventory level and location tracking.</span><span class="es" lang="es">Nivel de inventario y seguimiento de ubicación</span></li><li><span class="en" lang="en">Increased production efficiency.</span><span class="es" lang="es">Mayor eficiencia de producción</span></li><li><span class="en" lang="en">Product quality inspection.</span><span class="es" lang="es">Inspección de calidad del producto</span></li><li><span class="en" lang="en">Reduced environmental impact.</span><span class="es" lang="es">Impacto ambiental reducido</span></li></ul></div>
+    <div class="arrow"><img src="/img/icon-arrow.png" alt="" loading="lazy"></div>
+    <div class="col"><img src="/img/icon-qr.png" alt="" loading="lazy"><h3><span class="en" lang="en">Consumption</span><span class="es" lang="es">Consumo</span></h3>
+      <p class="lead"><span class="en" lang="en">Connect with final consumer or user to:</span><span class="es" lang="es">Conectar con el consumidor o usuario final para:</span></p><ul><li><span class="en" lang="en">Prevent fraud and build trust.</span><span class="es" lang="es">Prevenga el fraude y genere confianza</span></li><li><span class="en" lang="en">Engage with your consumer.</span><span class="es" lang="es">Interactuar con su consumidor</span></li><li><span class="en" lang="en">Obtain market insights and analytics.</span><span class="es" lang="es">Obtenga información y análisis del mercado</span></li><li><span class="en" lang="en">Ensure freshness and quality produce.</span><span class="es" lang="es">Garantice la frescura y calidad de los productos</span></li></ul></div>
   </div>
-  <div class="diagram"><img src="img/traceability-diagram.png" alt="Traceability: farm, distributor, processing, retailer, customer — food safety and quality assurance system" loading="lazy" width="1229" height="616"></div>
- </div>
+  <img class="diagram" src="/img/traceability-diagram.png" alt="Traceability: Farm, Distributor, Processing, Retailer, Customer — Food Safety &amp; Quality Assurance System" loading="lazy">
 </section>
 
-<section id="ssc">
- <div class="wrap">
-  <span class="label en">Data-powered</span><span class="label es">Impulsadas por datos</span>
-  <h2><span class="en">Smart supply chains</span><span class="es">Cadenas de suministro inteligentes</span></h2>
-  <p class="lead en">AgroChain's Smart Supply Chain (SSC) is a powerful traceability platform that digitizes supply chains from end to end. It captures data over the entire product life cycle, providing visibility on operations and transparency from raw materials to consumers and beyond. Our approach offers business programs with approximately 12 key solutions to make supply chains more resilient, agile, efficient and sustainable.</p>
-  <p class="lead es">La Smart Supply Chain (SSC) de AgroChain es una potente plataforma de trazabilidad que digitaliza las cadenas de suministro de punta a punta. Captura datos durante todo el ciclo de vida del producto y da visibilidad de las operaciones y transparencia desde la materia prima hasta el consumidor. Ofrecemos programas con unas 12 soluciones clave para cadenas más resilientes, ágiles, eficientes y sostenibles.</p>
-  <div class="grid4" style="margin-top:34px">
-   <div class="card"><h3><span class="en">Raw materials</span><span class="es">Materias primas</span></h3><p class="en">Traceability from source to manufacturing for transparency, sustainability, safety and brand protection.</p><p class="es">Trazabilidad desde el origen hasta la manufactura para transparencia, sostenibilidad, seguridad y protección de marca.</p></div>
-   <div class="card"><h3><span class="en">Manufacturing</span><span class="es">Manufactura</span></h3><p class="en">Regulatory compliance, visibility and operational excellence from manufacturing sites to shipment and warehouses.</p><p class="es">Cumplimiento regulatorio, visibilidad y excelencia operativa desde la planta hasta el despacho y los almacenes.</p></div>
-   <div class="card"><h3><span class="en">Distribution &amp; warehouses</span><span class="es">Distribución y almacenes</span></h3><p class="en">Connect warehouses and distribution sites to suppliers and buyers for operational excellence, authentication and compliance.</p><p class="es">Conecta almacenes y centros de distribución con proveedores y compradores para excelencia operativa, autenticación y cumplimiento.</p></div>
-   <div class="card"><h3><span class="en">Consumption</span><span class="es">Consumo</span></h3><p class="en">Connect brand owners with the final user for product authentication, engagement, market insights and education.</p><p class="es">Conecta a las marcas con el usuario final para autenticación del producto, interacción, información de mercado y educación.</p></div>
-  </div>
- </div>
-</section>
+<section class="data">
+  <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><circle cx="32" cy="32" r="19"/><path d="M8 44c10-4 30-18 48-30M14 50C30 40 46 26 54 14M20 18c6 8 18 24 24 30"/><circle cx="36" cy="30" r="2.2" fill="currentColor"/></svg>
+  <h4><span class="en" lang="en">Data-Powered</span><span class="es" lang="es">Alimentado por datos</span></h4>
+  <h2 class="h-thin"><span class="en" lang="en">Smart supply chains</span><span class="es" lang="es">Cadenas de suministro inteligentes</span></h2>
+  <div class="body p-block"><div class="en" lang="en"><p>AgroChain’s Smart Supply Chain (SSC) is a powerful traceability platform that digitizes supply chains from end to end.</p><p>The SSC platform captures data over the entire product life cycle. Our technology stack empowers the data across the supply chain, providing visibility on operations and transparency from raw materials to consumers and beyond.</p><p>Our solutions approach offers business programs containing approximately 12 key solutions, mainly helping businesses to have more resilient, agile, efficient and sustainable supply chains.</p></div><div class="es" lang="es"><p>La cadena de suministro inteligente (SSC) de AgroChain es una poderosa plataforma de trazabilidad que digitaliza las cadenas de suministro de principio a fin.</p><p>La plataforma SSC captura datos durante todo el ciclo de vida del producto. Nuestra pila de tecnología fortalece los datos a lo largo de la cadena de suministro, brindando visibilidad en las operaciones y transparencia desde las materias primas hasta los consumidores y más allá.</p><p>Nuestro enfoque modular ofrece seis programas comerciales que contienen aproximadamente 24 soluciones clave, principalmente ayudando a las empresas a tener cadenas de suministro más resistentes, ágiles, eficientes y sostenibles.</p></div></div>
 
-<section class="alt" id="geotracking">
- <div class="wrap grid2">
-  <div>
-   <span class="label en">Use case</span><span class="label es">Caso de uso</span>
-   <h2><span class="en">Inventory GeoTracking</span><span class="es">Geolocalización de inventario</span></h2>
-   <p class="lead en">A company wants to know where its inventory is in real time and exactly when it will arrive in port, for demand planning and supply chain efficiency. AgroChain's Inventory GeoTracking traces specific inventories around the globe in real time, providing complete supply chain visibility, geolocation and inventory levels.</p>
-   <p class="lead es">Una empresa quiere saber dónde está su inventario en tiempo real y cuándo llegará exactamente a puerto, para planificar la demanda y mejorar la eficiencia. La solución de geolocalización de AgroChain rastrea inventarios específicos en todo el mundo en tiempo real, con visibilidad completa, geolocalización y niveles de inventario.</p>
-   <h3 style="margin-top:26px"><span class="en">How it works</span><span class="es">Cómo funciona</span></h3>
-   <p class="lead en">We digitize, capture and empower traceability data from inventory levels, logistics and movement throughout the supply chain. Each product's history is combined with parent-child aggregation data to improve forecasting and management of expiring products, increase inventory accuracy and decrease costs.</p>
-   <p class="lead es">Digitalizamos y capturamos los datos de trazabilidad de inventario, logística y movimientos en toda la cadena. El historial de cada producto se combina con datos de agregación padre-hijo para mejorar los pronósticos y el manejo de productos perecederos, aumentar la exactitud del inventario y reducir costos.</p>
-  </div>
-  <img src="img/platform-devices.jpg" alt="AgroChain traceability platform on desktop, laptop, tablet and phone" loading="lazy" width="1200" height="793" style="border-radius:14px">
- </div>
-</section>
-
-<section id="projects">
- <div class="wrap">
-  <span class="label en">Field experience</span><span class="label es">Experiencia en campo</span>
-  <h2><span class="en">Raw material traceability for improved sustainability</span><span class="es">Trazabilidad de materias primas para una mayor sostenibilidad</span></h2>
-  <p class="lead en">Our raw-material traceability solution lets buyers know who the producers are — their socio-economic profile, farming practices and potential human and environmental impact — so they can support producers in improving quality, yield and revenue, trace raw materials back to the field and ensure food security.</p>
-  <p class="lead es">Nuestra solución de trazabilidad de materias primas permite saber quiénes son los productores — su perfil socioeconómico, sus prácticas agrícolas y su posible impacto humano y ambiental — para apoyarlos a mejorar la calidad, el rendimiento y sus ingresos, rastrear la materia prima hasta el campo y asegurar la seguridad alimentaria.</p>
-  <div class="grid3 projects" style="margin-top:34px">
-   <div class="item"><img src="img/project-palm.jpg" alt="Palm fruit harvest — ASOCIA Palmeras Diana project, Zulia, Venezuela" loading="lazy"><div class="cap"><b>ASOCIA – Palmeras Diana</b><span>Zulia, Venezuela</span></div></div>
-   <div class="item"><img src="img/project-cattle.jpg" alt="Dual purpose cattle ranching, Zulia, Venezuela" loading="lazy"><div class="cap"><b class="en">Dual-purpose ranching</b><b class="es">Ganadería doble propósito</b><span>Zulia, Venezuela</span></div></div>
-   <div class="item"><img src="img/project-slaughterhouse.jpg" alt="Slaughterhouse traceability project, Zulia, Venezuela" loading="lazy"><div class="cap"><b class="en">Slaughterhouses</b><b class="es">Mataderos</b><span>Zulia, Venezuela</span></div></div>
-   <div class="item"><img src="img/project-blue-crab.jpg" alt="Blue crab meat project, Maracaibo, Venezuela" loading="lazy"><div class="cap"><b class="en">Blue crab meat</b><b class="es">Carne de cangrejo azul</b><span>Maracaibo, Zulia</span></div></div>
-   <div class="item"><img src="img/project-crab-plant.jpg" alt="Crab meat and shrimp packing plant, Maracaibo" loading="lazy"><div class="cap"><b class="en">Crab meat &amp; shrimp packing</b><b class="es">Empaque de cangrejo y camarón</b><span>Maracaibo, Zulia</span></div></div>
-   <div class="item"><img src="img/project-shrimp.jpg" alt="Shrimp export project, Maracaibo" loading="lazy"><div class="cap"><b class="en">Shrimp export</b><b class="es">Exportación de camarón</b><span>Maracaibo, Zulia</span></div></div>
-  </div>
- </div>
-</section>
-
-<section class="band">
- <div class="wrap">
-  <blockquote class="en">Tomorrow's agriculture starts today.</blockquote>
-  <blockquote class="es">La agricultura del mañana empieza hoy.</blockquote>
- </div>
-</section>
-
-<section id="about">
- <div class="wrap grid2">
-  <div>
-   <span class="label en">About us</span><span class="label es">Nosotros</span>
-   <h2><span class="en">Our mission</span><span class="es">Nuestra misión</span></h2>
-   <p class="lead en">To be a socially and environmentally responsible leader that influences and helps citizens, businesses and public institutions globally to build a better world together by leveraging transformative technologies.</p>
-   <p class="lead es">Ser un líder social y ambientalmente responsable que inspire y ayude a ciudadanos, empresas e instituciones públicas de todo el mundo a construir juntos un mundo mejor, aprovechando tecnologías transformadoras.</p>
-   <div class="card values" style="margin-top:26px">
-    <h3><span class="en">Our values</span><span class="es">Nuestros valores</span></h3>
-    <ul class="en"><li>Social and environmental responsibility</li><li>Agility</li><li>Respect for others and collaboration</li><li>Accountability</li><li>Quality and respect for commitments</li></ul>
-    <ul class="es"><li>Responsabilidad social y ambiental</li><li>Agilidad</li><li>Respeto por los demás y colaboración</li><li>Rendición de cuentas</li><li>Calidad y cumplimiento de compromisos</li></ul>
-   </div>
-   <p class="lead en" style="margin-top:22px">With growing global demand and consumers asking for more transparency, companies need solutions that provide true end-to-end supply chain visibility.</p>
-   <p class="lead es" style="margin-top:22px">Con la creciente demanda global y consumidores que exigen más transparencia, las empresas necesitan soluciones que den visibilidad real de punta a punta en su cadena de suministro.</p>
-  </div>
-  <img src="img/about-fields.jpg" alt="Aerial view of agricultural fields" loading="lazy" style="border-radius:14px">
- </div>
-</section>
-
-<section class="alt" id="technology">
- <div class="wrap">
-  <span class="label en">Digital farming at hand</span><span class="label es">Agricultura digital a tu alcance</span>
-  <h2><span class="en">The SSC platform</span><span class="es">La plataforma SSC</span></h2>
+  <div class="blk"><svg class="ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><circle cx="28" cy="36" r="17"/><circle cx="34" cy="30" r="17" stroke-dasharray="2 2"/><circle cx="31" cy="33" r="13"/><circle cx="20" cy="45" r="2" fill="currentColor"/></svg></div>
   <div class="grid2">
-   <div>
-    <p class="lead en">AgroChain's Smart Supply Chain (SSC) platform is a set of traceability software and hardware technologies linked together in the cloud. It digitizes supply chains from end to end for complete real-time visibility, built on blockchain — specifically the Ethereum blockchain. It helps businesses, NGOs, governments and consumers increase the visibility, transparency and traceability of their products and make better decisions.</p>
-    <p class="lead es">La plataforma Smart Supply Chain (SSC) de AgroChain es un conjunto de tecnologías de trazabilidad en software y hardware conectadas en la nube. Digitaliza la cadena de suministro de punta a punta con visibilidad completa en tiempo real, sobre blockchain de Ethereum. Ayuda a empresas, ONG, gobiernos y consumidores a aumentar la visibilidad, la transparencia y la trazabilidad de sus productos y a tomar mejores decisiones.</p>
-    <p class="lead en" style="margin-top:14px">It is scalable and modular: a turnkey solution configurable to your needs that connects with your existing systems (ERP, MES, WMS). It is secure and powered by artificial intelligence.</p>
-    <p class="lead es" style="margin-top:14px">Es escalable y modular: una solución llave en mano que se configura según tus necesidades y se conecta con tus sistemas actuales (ERP, MES, WMS). Es segura y funciona con inteligencia artificial.</p>
-   </div>
-   <img src="img/ssc-flow.png" alt="Farmer, processor, distributor, retailer, customer and regulator connected with blockchain technology" loading="lazy" style="border-radius:14px">
+    <div><h5><span class="en" lang="en">Raw materials</span><span class="es" lang="es">Materias primas</span></h5><p><span class="en" lang="en">Traceability solutions for raw materials from source to manufacturing for transparency, sustainability, safety and brand protection.</span><span class="es" lang="es">Soluciones de trazabilidad para materias primas desde el origen hasta la fabricación para la transparencia, la sostenibilidad, la seguridad y la protección de la marca.</span></p></div>
+    <div><h5><span class="en" lang="en">Consumption</span><span class="es" lang="es">Consumo</span></h5><p><span class="en" lang="en">Traceability solutions to connect brand owners with the final user for product authentication, engagement, market insights and education.</span><span class="es" lang="es">Soluciones de trazabilidad para conectar a los propietarios de marcas con el usuario final para la autenticación del producto, el compromiso, los conocimientos del mercado y la educación.</span></p></div>
+    <div><h5><span class="en" lang="en">Manufacturing</span><span class="es" lang="es">Fabricación</span></h5><p><span class="en" lang="en">Traceability solutions for regulatory compliance, visibility and operational excellence from manufacturing sites to point of shipment and/or warehouses.</span><span class="es" lang="es">Soluciones de trazabilidad para el cumplimiento normativo, la visibilidad y la excelencia operativa desde los sitios de fabricación hasta el punto de envío y/o los almacenes.</span></p></div>
+    <div><h5><span class="en" lang="en">Distribution and warehouses</span><span class="es" lang="es">Distribución y almacenes</span></h5><p><span class="en" lang="en">Traceability solutions to connect warehouses and distribution sites to suppliers and buyers for operational excellence, authentication and regulatory compliance.</span><span class="es" lang="es">Soluciones de trazabilidad para conectar almacenes y sitios de distribución con proveedores y compradores para la excelencia operativa, la autenticación y el cumplimiento normativo.</span></p></div>
   </div>
-  <h3 style="margin-top:40px"><span class="en">The platform contains 3 layers of technology</span><span class="es">La plataforma tiene 3 capas de tecnología</span></h3>
-  <div class="grid3" style="margin-top:16px">
-   <div class="card"><div class="icon">1</div><p class="en">Hardware and software technologies for data capture along the supply chain.</p><p class="es">Tecnologías de hardware y software para capturar datos a lo largo de la cadena.</p></div>
-   <div class="card"><div class="icon">2</div><p class="en">A cloud-based solution that empowers contextual data with traceability.</p><p class="es">Una solución en la nube que potencia los datos con contexto y trazabilidad.</p></div>
-   <div class="card"><div class="icon">3</div><p class="en">Configurable applications that turn data into value to solve supply chain issues.</p><p class="es">Aplicaciones configurables que convierten los datos en valor para resolver problemas de la cadena.</p></div>
+
+  <div class="blk"><svg class="ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><circle cx="28" cy="36" r="17"/><circle cx="34" cy="30" r="17" stroke-dasharray="2 2"/><circle cx="31" cy="33" r="13"/><circle cx="20" cy="45" r="2" fill="currentColor"/></svg>
+    <h3><span class="en" lang="en">Inventory GeoTracking</span><span class="es" lang="es">Seguimiento geográfico del inventario</span></h3>
+    <div class="en" lang="en"><p>A company wants to know where its inventory is in real time and the exact time it will arrive in port for demand planning and improved supply chain efficiency. Transportation delays affect the company’s distribution and revenue, and they want to better forecast the impact and be able to act on it.</p><p>AgroChain’s Inventory GeoTracking solution can trace specific inventories around the globe in real time with precision, providing complete supply chain visibility, geolocation and inventory levels.</p></div><div class="es" lang="es"><p>Una empresa quiere saber dónde está su inventario en tiempo real y la hora exacta en que llegará al puerto para planificar la demanda y mejorar la eficiencia de la cadena de suministro. Los retrasos en el transporte afectan la distribución y los ingresos de la empresa, y quieren pronosticar mejor el impacto y poder actuar en consecuencia.</p><p>La solución Inventory GeoTracking de AgroChain puede rastrear inventarios específicos en todo el mundo en tiempo real con precisión, proporcionando visibilidad completa de la cadena de suministro, geolocalización y niveles de inventario.</p></div>
   </div>
-  <div class="grid2" style="margin-top:22px;align-items:stretch">
-   <div class="card"><h3><span class="en">Ecosystems</span><span class="es">Ecosistemas</span></h3><p class="en">Supplier ecosystems help supply chain managers overcome the shortcomings of conventional approaches when managing complex supply chains that often span the globe.</p><p class="es">Los ecosistemas de proveedores ayudan a superar las limitaciones de los enfoques tradicionales al gestionar cadenas de suministro complejas que muchas veces abarcan todo el mundo.</p></div>
-   <div class="card"><h3>Agro-analytics</h3><p class="en">Use the full potential of your agricultural enterprise: the system calculates optimal output per vehicle, fuel consumption and even the plant protection required for every field. No more unexpected costs — you know exactly where your money goes.</p><p class="es">Aprovecha al 100 % tu empresa agrícola: el sistema calcula el rendimiento óptimo por vehículo, el consumo de combustible e incluso la protección de cultivos que necesita cada campo. Sin costos inesperados: sabes exactamente a dónde va tu dinero.</p></div>
+  <div class="blk"><svg class="ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><circle cx="28" cy="36" r="17"/><circle cx="34" cy="30" r="17" stroke-dasharray="2 2"/><circle cx="31" cy="33" r="13"/><circle cx="20" cy="45" r="2" fill="currentColor"/></svg>
+    <h3><span class="en" lang="en">How it works</span><span class="es" lang="es">Cómo funciona</span></h3>
+    <div class="en" lang="en"><p>We digitized, captured and empowered traceability data from inventory levels, logistics and movement throughout the supply chain. The history of each product within the inventory is digitized and combined with the aggregation of the parent-child relationship data to improve forecasting and management of expiring products, increase inventory accuracy and decrease costs.</p></div><div class="es" lang="es"><p>Digitalizamos, capturamos y potenciamos datos de trazabilidad de niveles de inventario, logística y movimiento a lo largo de la cadena de suministro. El historial de cada producto dentro del inventario se digitaliza y se combina con la agregación de los datos de la relación padre-hijo para mejorar la previsión y la gestión de los productos que caducan, aumentar la precisión del inventario y reducir los costes.</p></div>
   </div>
- </div>
+  <div class="blk"><svg class="ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><circle cx="28" cy="36" r="17"/><circle cx="34" cy="30" r="17" stroke-dasharray="2 2"/><circle cx="31" cy="33" r="13"/><circle cx="20" cy="45" r="2" fill="currentColor"/></svg>
+    <h3><span class="en" lang="en">Raw material traceability for improved sustainability</span><span class="es" lang="es">Trazabilidad de materias primas para una mayor sostenibilidad</span></h3>
+    <div class="en" lang="en"><p>Our clients seeks transparency with consumers, informing them on the origin of their raw materials and the regenerative agricultural practices of their ingredients.</p><p>Our raw-material traceability solution provides complete visibility, allowing the user to know who the producers are, with information about their socio-economic profile, farming practices and potential human and environmental impact. This information will enable downstream buyers and processors to support the producers to improve their farming practices, the quality of their product, their yield and therefore their revenues, mitigate negative human and environmental impact, trace raw materials back to the field, ensure food security and more.</p></div><div class="es" lang="es"><p>Nuestros clientes buscan transparencia con los consumidores, informándoles sobre el origen de sus materias primas y las prácticas agrícolas regenerativas de sus ingredientes.</p><p>Nuestra solución de trazabilidad de materias primas brinda visibilidad completa, permitiendo al usuario saber quiénes son los productores, con información sobre su perfil socioeconómico, prácticas agrícolas y su potencial impacto humano y ambiental. Esta información permitirá a los compradores y procesadores apoyar a los productores para mejorar sus prácticas agrícolas, la calidad de su producto, su rendimiento y por lo tanto sus ingresos, mitigar el impacto humano y ambiental negativo, rastrear las materias primas hasta el campo, garantizar la seguridad alimentaria y más.</p></div>
+  </div>
 </section>
 
-<section id="insights">
- <div class="wrap">
-  <span class="label en">Insights</span><span class="label es">Artículos</span>
-  <h2><span class="en">Supply chain insights</span><span class="es">Ideas sobre la cadena de suministro</span></h2>
-  <div class="grid3 posts" style="margin-top:30px">
-   <div class="item"><img src="img/post-food-waste.jpg" alt="Food waste in the food supply chain" loading="lazy"><div class="cap"><small>2022</small><h3>A Digital Food Supply Chain Can Reduce Food Waste</h3><p>Food waste is a huge problem in the food supply chain, and digital traceability helps reduce it from one end to the other.</p></div></div>
-   <div class="item"><img src="img/post-traceability-app.jpg" alt="Traceability app used in the field" loading="lazy"><div class="cap"><small>2022</small><h3>Traceability App for Food Industry</h3><p>Mobile data capture from virtually any location and the power of a digital supply chain.</p></div></div>
-   <div class="item"><img src="img/post-covid.jpg" alt="Supply chain disruption" loading="lazy"><div class="cap"><small>2022</small><h3>How COVID Broke Supply Chains and How Blockchain Could Fix Them</h3><p>The crisis revealed severe shortages and fragile supply chains — and how blockchain can make them more resilient.</p></div></div>
-   <div class="item"><img src="img/post-crisis.jpg" alt="Harvest and food industry" loading="lazy"><div class="cap"><small>2022</small><h3>The Effect of Supply Chain Crisis on the Food Industry</h3><p>The pandemic had deep socio-economic effects on businesses across the world and on food supply chains.</p></div></div>
-   <div class="item"><img src="img/post-challenges.jpg" alt="Agricultural fields from above" loading="lazy"><div class="cap"><small>2022</small><h3>Six Food Industry Supply Chain Challenges</h3><p>Production scheduling, quality control and increasing calls for transparency are top challenges for food companies.</p></div></div>
-   <div class="item"><img src="img/farmer-field.jpg" alt="Farmer inspecting crops" loading="lazy"><div class="cap"><small>AgroChain</small><h3 class="en">Ready to digitize your supply chain?</h3><h3 class="es">¿Listo para digitalizar tu cadena de suministro?</h3><p class="en">Talk to our team about a traceability program for your operation.</p><p class="es">Habla con nuestro equipo sobre un programa de trazabilidad para tu operación.</p></div></div>
+<section class="projects" aria-label="Projects">
+  <div class="prow">
+    <figure><img src="/img/project-palm.jpg" alt="Oil palm harvest, ASOCIA Palmeras Diana" loading="lazy"><figcaption><span class="en" lang="en">ASOCIA- Palmeras Diana Project.</span><span class="es" lang="es">Proyectos ASOCIA - Palmeras Diana</span><br><span class="en" lang="en">Venezuela - Zulia State</span><span class="es" lang="es">Venezuela - Estado Zulia</span></figcaption></figure>
+    <figure><img src="/img/project-cattle.jpg" alt="Dual purpose cattle ranching" loading="lazy"><figcaption><span class="en" lang="en">Dual Purpose Ranching Projects.</span><span class="es" lang="es">Proyectos de Ganadería de Doble Propósito.</span><br><span class="en" lang="en">Venezuela - Zulia State</span><span class="es" lang="es">Venezuela - Estado Zulia</span></figcaption></figure>
+    <figure><img src="/img/project-slaughterhouse.jpg" alt="Slaughterhouse project" loading="lazy"><figcaption><span class="en" lang="en">Slaughterhouses Project.</span><span class="es" lang="es">Proyectos de Mataderos.</span><br><span class="en" lang="en">Venezuela - Zulia State</span><span class="es" lang="es">Venezuela - Estado Zulia</span></figcaption></figure>
   </div>
- </div>
+  <div class="psep"><span><span class="en" lang="en">Chain Supply and Logistics Experience</span><span class="es" lang="es">Experiencia en Logística y Cadenas de Suministros</span></span></div>
+  <div class="prow r2">
+    <figure><img src="/img/project-blue-crab.jpg" alt="Blue crab" loading="lazy"><figcaption><span class="en" lang="en">Blue Crab Meet Project.</span><span class="es" lang="es">Proyecto Carne de Cangrejo Azul.</span><br><span class="en" lang="en">Maracaibo - Zulia State</span><span class="es" lang="es">Maracaibo - Estado Zulia</span></figcaption></figure>
+    <figure><img src="/img/project-crab-plant.jpg" alt="Crab and shrimp packing plant" loading="lazy"><figcaption><span class="en" lang="en">Crab Meet and Shrimp Packing Project.</span><span class="es" lang="es">Empaque de cangrejo y camarones.</span><br><span class="en" lang="en">Maracaibo - Zulia State</span><span class="es" lang="es">Maracaibo - Estado Zulia</span></figcaption></figure>
+    <figure><img src="/img/project-shrimp.jpg" alt="Export shrimp" loading="lazy"><figcaption><span class="en" lang="en">Shrimp Export Project.</span><span class="es" lang="es">Exportación de camarones Proyecto.</span><br><span class="en" lang="en">Maracaibo - Zulia State</span><span class="es" lang="es">Maracaibo - Estado Zulia</span></figcaption></figure>
+  </div>
 </section>
 
-<section class="alt" id="partners">
- <div class="wrap" style="text-align:center">
-  <span class="label en">Network</span><span class="label es">Red</span>
-  <h2><span class="en">Partners &amp; technologies</span><span class="es">Aliados y tecnologías</span></h2>
-  <div class="partners">
-   <div><img src="img/partner-scm.png" alt="SCM Supply Chain Management" loading="lazy"></div>
-   <div><img src="img/partner-ascm.png" alt="ASCM Association for Supply Chain Management" loading="lazy"></div>
-   <div><img src="img/partner-alv.jpg" alt="Asociación de Logística de Venezuela" loading="lazy"></div>
-   <div><img src="img/partner-ethereum.png" alt="Ethereum" loading="lazy"></div>
-   <div><img src="img/partner-blockchain.png" alt="Blockchain" loading="lazy"></div>
-   <div><img src="img/partner-crop.png" alt="Crop Inc." loading="lazy"></div>
-  </div>
- </div>
-</section>
+<div class="band" aria-hidden="true"></div>
+<div class="band-img" aria-hidden="true"></div>
 
-<section class="contact" id="contact">
- <div class="wrap">
-  <span class="label en">Contact</span><span class="label es">Contacto</span>
-  <h2><span class="en">Let's build a smarter supply chain</span><span class="es">Construyamos una cadena de suministro más inteligente</span></h2>
-  <p class="lead en" style="margin:0 auto 10px">Tell us about your operation and we'll show you how traceability can work for you.</p>
-  <p class="lead es" style="margin:0 auto 10px">Cuéntanos sobre tu operación y te mostramos cómo la trazabilidad puede funcionar para ti.</p>
-  <form id="cform" class="card" style="max-width:640px;margin:26px auto 0;text-align:left;display:grid;gap:12px">
-   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-    <input name="first" required placeholder="First name / Nombre">
-    <input name="last" placeholder="Last name / Apellido">
-   </div>
-   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-    <input name="email" type="email" required placeholder="Email">
-    <input name="phone" placeholder="Phone / Teléfono">
-   </div>
-   <textarea name="msg" rows="5" required placeholder="Type your message / Escribe tu mensaje"></textarea>
-   <button class="btn" type="submit" style="margin-top:4px;border:0;cursor:pointer;justify-self:start"><span class="en">Send message</span><span class="es">Enviar mensaje</span></button>
-   <p style="font-size:13px;color:var(--muted)"><span class="en">Or email us at</span><span class="es">O escríbenos a</span> <a href="mailto:gonzalezjorge72@yahoo.com">gonzalezjorge72@yahoo.com</a></p>
-  </form>
-  <style>#cform input,#cform textarea{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:12px 14px;font:400 15px Montserrat}@media(max-width:600px){#cform div{grid-template-columns:1fr!important}}</style>
- </div>
+<section class="partners" aria-label="Partners">
+  <div class="row"><img class="" src="/img/partner-colegio.png" alt="Colegio de Ingenieros de Venezuela" loading="lazy"><img class="" src="/img/partner-luz.png" alt="Universidad del Zulia" loading="lazy"><img class="" src="/img/partner-asociaa.jpg" alt="ASOCIAA" loading="lazy"><img class="" src="/img/partner-fa.jpg" alt="Facultad de Agronomía LUZ" loading="lazy"><img class="wide" src="/img/partner-ethereum.png" alt="Ethereum" loading="lazy"></div>
+  <div class="row"><img class="wide" src="/img/partner-scm.png" alt="SCM Supply Chain Management" loading="lazy"><img class="wide" src="/img/partner-ascm.png" alt="Association for Supply Chain Management" loading="lazy"><img class="wide" src="/img/partner-alv.png" alt="Asociación de Logística de Venezuela" loading="lazy"><img class="" src="/img/partner-blockchain.png" alt="Blockchain" loading="lazy"><img class="" src="/img/partner-ssol.jpg" alt="Supply Chain Internet-Powered Solutions" loading="lazy"></div>
 </section>
 </main>
-
-<footer>
- <div class="wrap">
-  <img src="img/logo-agrochain.png" alt="AgroChain Technologies" loading="lazy" width="90" height="38">
-  <span>© <span id="yr">2026</span> AgroChain Technologies.</span>
- </div>
+<footer class="foot">
+  <div class="fnav"><nav aria-label="Main"><a href="/" aria-current=page><span class="en" lang="en">HOME</span><span class="es" lang="es">PRINCIPAL</span></a><a href="/company"><span class="en" lang="en">ABOUT US</span><span class="es" lang="es">EMPRESA</span></a><a href="/technology"><span class="en" lang="en">TECHNOLOGY</span><span class="es" lang="es">TECNOLOGÍA</span></a><a href="/news"><span class="en" lang="en">BLOG ENTRIES</span><span class="es" lang="es">NOTICIAS</span></a></nav></div>
+  <div class="media">
+    <div class="left"><video src="/video/drone-loop.mp4" poster="/img/drone-poster.jpg" autoplay muted loop playsinline preload="none" aria-hidden="true"></video></div>
+    <div class="right">
+      <img src="/img/logo-agrochain.png" alt="AgroChain Technologies" width="250" height="105" loading="lazy">
+      <div class="contact">
+        <div class="en" lang="en">Contact us</div><div class="es" lang="es">Contáctenos</div>
+        <a href="mailto:gonzalezjorge72@yahoo.com">gonzalezjorge72@yahoo.com</a><br>
+        <a class="btn" href="mailto:gonzalezjorge72@yahoo.com?subject=AgroChain"><span class="en" lang="en">Send us an email</span><span class="es" lang="es">Envíenos un correo</span></a>
+      </div>
+      <div class="copy"><span class="en" lang="en">© 2022 by AgroChain Technologies.</span><span class="es" lang="es">© 2022 por AgroChain Technologies.</span></div>
+    </div>
+  </div>
 </footer>
-
-<script>
-(function(){
- var root=document.documentElement, btn=document.getElementById('langbtn');
- function setLang(l){root.lang=l;btn.textContent=l==='en'?'ES':'EN';try{localStorage.setItem('agro-lang',l)}catch(e){}}
- var saved=null;try{saved=localStorage.getItem('agro-lang')}catch(e){}
- setLang(saved||((navigator.language||'en').toLowerCase().indexOf('es')===0?'es':'en'));
- btn.onclick=function(){setLang(root.lang==='en'?'es':'en')};
- var m=document.getElementById('menu');document.getElementById('menubtn').onclick=function(){m.classList.toggle('open')};
- m.querySelectorAll('a').forEach(function(a){a.onclick=function(){m.classList.remove('open')}});
- document.getElementById('yr').textContent=new Date().getFullYear();
- document.getElementById('cform').onsubmit=function(e){e.preventDefault();var f=e.target;
-  var body='Name: '+f.first.value+' '+f.last.value+'\nEmail: '+f.email.value+'\nPhone: '+f.phone.value+'\n\n'+f.msg.value;
-  location.href='mailto:gonzalezjorge72@yahoo.com?subject='+encodeURIComponent('AgroChain website inquiry')+'&body='+encodeURIComponent(body);};
-})();
-</script>
+<script src="/assets/site.js?v=5" defer></script>
 </body>
 </html>
