@@ -2,7 +2,7 @@
   var root=document.documentElement;
   function set(l){
     root.lang=l;
-    try{localStorage.setItem('agro-lang',l)}catch(e){}
+    try{sessionStorage.setItem('agro-lang',l)}catch(e){}
     if(window.__T)document.title=__T[l]||__T.en;
     document.querySelectorAll('.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l)});
   }
