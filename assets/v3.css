@@ -543,3 +543,5 @@ html:not([lang=es]) .es{display:none!important}
   .post.feat .post-b{padding:26px}
   .mission-card{border-radius:26px}
 }
+.cform .fmail{justify-self:start;color:var(--txt-l)}
+.cform .fmail[hidden]{display:none}

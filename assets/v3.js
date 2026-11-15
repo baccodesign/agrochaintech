@@ -103,24 +103,37 @@
     if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(es[0].isIntersecting&&!pex.dataset.started){pex.dataset.started='1';restart()}},{threshold:.4}).observe(pex)}
   }
 
-  /* formulario de contacto (FormSubmit → correo de AgroChain) */
+  /* formulario de contacto (FormSubmit → correo de AgroChain)
+     - reintenta si el servicio falla (errores 5xx o de red)
+     - si no se puede entregar, ofrece enviar el mismo mensaje desde el correo del visitante */
   var form=document.getElementById('cform');
   if(form){
     var TO='gonzalezjorge72'+'@'+'yahoo.com';
-    function show(c){form.querySelectorAll('.fmsg').forEach(function(m){m.hidden=!m.classList.contains(c)})}
+    var mailBtn=form.querySelector('.fmail');
+    function show(c){form.querySelectorAll('.fmsg').forEach(function(m){m.hidden=!m.classList.contains(c)});if(mailBtn)mailBtn.hidden=c!=='err'}
+    function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+    function send(payload,tries){
+      return fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+        .then(function(r){return r.text().then(function(t){var j={};try{j=JSON.parse(t)}catch(e){}return {status:r.status,j:j}})})
+        .then(function(r){
+          if(String(r.j.success)==='true')return true;
+          if((r.status>=500||!r.status)&&tries>1)return wait(1200).then(function(){return send(payload,tries-1)});
+          if(window.console)console.warn('Contact form:',r.status,r.j&&r.j.message);
+          return false;
+        },function(){return tries>1?wait(1200).then(function(){return send(payload,tries-1)}):false});
+    }
     form.addEventListener('submit',function(e){
       e.preventDefault();
+      if(form.classList.contains('sending'))return;
       var d=new FormData(form);
       if(d.get('_honey'))return;
-      var name=(d.get('name')||'').trim(),email=(d.get('email')||'').trim(),msg=(d.get('message')||'').trim();
+      var name=(d.get('name')||'').trim(),email=(d.get('email')||'').trim(),company=(d.get('company')||'').trim(),msg=(d.get('message')||'').trim();
       if(!name||!msg||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){show('inv');return}
       form.classList.add('sending');show('none');
-      fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify({name:name,email:email,company:(d.get('company')||'').trim(),message:msg,
-          _subject:'Nuevo mensaje desde agrochaintech.com — '+name,_template:'table',_captcha:'false',_honey:''})})
-      .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
-      .then(function(r){if(r.ok&&String(r.j.success)==='true'){form.reset();show('ok')}else{show('err')}})
-      .catch(function(){show('err')})
+      if(mailBtn){mailBtn.href='mailto:'+TO+'?subject='+encodeURIComponent('Contacto desde agrochaintech.com — '+name)+'&body='+encodeURIComponent(msg+'\n\n'+name+(company?' · '+company:'')+'\n'+email)}
+      send({name:name,email:email,company:company,message:msg,_replyto:email,
+            _subject:'Nuevo mensaje desde agrochaintech.com — '+name,_template:'table',_captcha:'false'},3)
+      .then(function(ok){if(ok){form.reset();show('ok')}else show('err')})
       .then(function(){form.classList.remove('sending')});
     });
   }
