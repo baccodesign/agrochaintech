@@ -211,4 +211,60 @@
     setInterval(function(){if(!document.hidden)load()},30*60000);
     setInterval(function(){if(updated)upd(updated)},60000);
   }
+
+  /* Cintillo de mercados agrícolas + noticias (página principal) */
+  var band=document.querySelector('.mband');
+  if(band){
+    var MK=[],NW=[];
+    function isEs(){return root.lang==='es'}
+    function esc2(t){return String(t||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+    function fmt(v,u){var d=v>=1000?0:v<1?3:2;return 'US$'+v.toLocaleString(isEs()?'es-CO':'en-US',{minimumFractionDigits:d,maximumFractionDigits:d})+'/'+u}
+    function spark(arr,w,h){
+      if(!arr||arr.length<2)return '';
+      var mn=Math.min.apply(null,arr),mx=Math.max.apply(null,arr),r=mx-mn||1;
+      return arr.map(function(v,i){return (i?'L':'M')+(i*(w/(arr.length-1))).toFixed(1)+' '+(h-2-(v-mn)/r*(h-4)).toFixed(1)}).join(' ');
+    }
+    function loop(row,html){
+      var tr=row.querySelector('.mtrack');tr.innerHTML='<div class="mset">'+html+'</div><div class="mset" aria-hidden="true">'+html+'</div>';
+      tr.querySelectorAll('.mset[aria-hidden] a, .mset[aria-hidden] button').forEach(function(e){e.tabIndex=-1});
+      var w=tr.querySelector('.mset').scrollWidth;tr.style.setProperty('--dur',Math.max(30,w/45)+'s');row.hidden=false;
+    }
+    function drawPrices(){
+      if(!MK.length)return;
+      loop(band.querySelector('.mprices'),MK.map(function(m,i){
+        var up=m.change>=0,cls=m.change===0?'eq':up?'up':'dn';
+        return '<button type="button" class="mi '+cls+'" data-i="'+i+'"><b>'+esc2(isEs()?m.es:m.en)+'</b><span class="mv">'+fmt(m.price,m.unit)+'</span><span class="mc">'+(up?'▲':'▼')+' '+Math.abs(m.pct).toFixed(2)+'%</span><svg viewBox="0 0 60 20" aria-hidden="true"><path d="'+spark(m.series,60,20)+'"/></svg></button>';
+      }).join(''));
+      band.querySelectorAll('.mprices .mi').forEach(function(b){b.addEventListener('click',function(){openPanel(+b.dataset.i)})});
+    }
+    function drawNews(){
+      if(!NW.length)return;
+      var L=NW.filter(function(i){return i.lang===(isEs()?'es':'en')}).slice(0,12);if(!L.length)L=NW.slice(0,12);
+      loop(band.querySelector('.mnews'),L.map(function(i){return '<a class="mi" href="'+esc2(i.link)+'" target="_blank" rel="noopener"><span class="msrc">'+esc2(i.source)+'</span>'+esc2(i.title)+'</a>'}).join(''));
+    }
+    var panel=band.querySelector('.mpanel'),openI=-1;
+    function openPanel(i){
+      var m=MK[i];if(!m)return;openI=i;
+      var up=m.change>=0,E=isEs();
+      panel.querySelector('.mp-sym').textContent=m.symbol+' · '+(E?'futuros':'futures');
+      panel.querySelector('.mp-name').textContent=E?m.es:m.en;
+      panel.querySelector('.mp-price').innerHTML='<b>'+fmt(m.price,m.unit)+'</b><span class="'+(up?'up':'dn')+'">'+(up?'▲ +':'▼ ')+m.change.toFixed(m.price>=1000?0:3)+' ('+(up?'+':'')+m.pct.toFixed(2)+'%)</span>';
+      var d=spark(m.series,600,160);
+      panel.querySelector('.mp-chart').innerHTML='<path class="area" d="'+d+' L600 160 L0 160 Z"/><path class="line" d="'+d+'"/>';
+      var t=m.time?new Date(m.time):null;
+      panel.querySelector('.mp-stats').innerHTML='<div><dt>'+(E?'Máximo 1 mes':'1-month high')+'</dt><dd>'+fmt(m.high,m.unit)+'</dd></div><div><dt>'+(E?'Mínimo 1 mes':'1-month low')+'</dt><dd>'+fmt(m.low,m.unit)+'</dd></div><div><dt>'+(E?'Último dato':'Last update')+'</dt><dd>'+(t?t.toLocaleString(E?'es-CO':'en-US',{dateStyle:'medium',timeStyle:'short'}):'—')+'</dd></div><div><dt>'+(E?'Fuente':'Source')+'</dt><dd>Yahoo Finance · '+(E?'referencial, con retraso':'reference, delayed')+'</dd></div>';
+      panel.hidden=false;band.classList.add('paused','open');
+      band.querySelectorAll('.mprices .mi').forEach(function(b){b.classList.toggle('sel',+b.dataset.i===i)});
+    }
+    function closePanel(){panel.hidden=true;openI=-1;band.classList.remove('open');if(!band.classList.contains('hold'))band.classList.remove('paused');band.querySelectorAll('.mi.sel').forEach(function(b){b.classList.remove('sel')})}
+    panel.querySelector('.mp-x').addEventListener('click',closePanel);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden)closePanel()});
+    var pb=band.querySelector('.mpause');
+    pb.addEventListener('click',function(){var h=band.classList.toggle('hold');band.classList.toggle('paused',h||!panel.hidden);pb.setAttribute('aria-pressed',h)});
+    document.querySelectorAll('.langs button').forEach(function(b){b.addEventListener('click',function(){drawPrices();drawNews();if(openI>-1)openPanel(openI)})});
+    function loadM(){return fetch('/api/markets').then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.items&&j.items.length){MK=j.items;drawPrices();if(openI>-1)openPanel(openI)}}).catch(function(){})}
+    function loadN(){return fetch('/api/news').then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.items&&j.items.length){NW=j.items;drawNews()}}).catch(function(){})}
+    loadM();loadN();
+    setInterval(function(){if(!document.hidden){loadM();loadN()}},15*60000);
+  }
 })();
