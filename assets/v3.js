@@ -103,38 +103,23 @@
     if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(es[0].isIntersecting&&!pex.dataset.started){pex.dataset.started='1';restart()}},{threshold:.4}).observe(pex)}
   }
 
-  /* formulario de contacto (FormSubmit → correo de AgroChain)
-     - reintenta si el servicio falla (errores 5xx o de red)
-     - si no se puede entregar, ofrece enviar el mismo mensaje desde el correo del visitante */
+  /* formulario de contacto → /api/contact (Cloudflare) → correo de AgroChain */
   var form=document.getElementById('cform');
   if(form){
-    var TO='gonzalezjorge72'+'@'+'yahoo.com';
-    var mailBtn=form.querySelector('.fmail');
-    function show(c){form.querySelectorAll('.fmsg').forEach(function(m){m.hidden=!m.classList.contains(c)});if(mailBtn)mailBtn.hidden=c!=='err'}
-    function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
-    function send(payload,tries){
-      return fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
-        .then(function(r){return r.text().then(function(t){var j={};try{j=JSON.parse(t)}catch(e){}return {status:r.status,j:j}})})
-        .then(function(r){
-          if(String(r.j.success)==='true')return true;
-          if((r.status>=500||!r.status)&&tries>1)return wait(1200).then(function(){return send(payload,tries-1)});
-          if(window.console)console.warn('Contact form:',r.status,r.j&&r.j.message);
-          return false;
-        },function(){return tries>1?wait(1200).then(function(){return send(payload,tries-1)}):false});
-    }
+    function show(c){form.querySelectorAll('.fmsg').forEach(function(m){m.hidden=!m.classList.contains(c)})}
+    var fm=form.querySelector('.fmail');if(fm)fm.remove();
     form.addEventListener('submit',function(e){
       e.preventDefault();
       if(form.classList.contains('sending'))return;
       var d=new FormData(form);
-      if(d.get('_honey'))return;
-      var name=(d.get('name')||'').trim(),email=(d.get('email')||'').trim(),company=(d.get('company')||'').trim(),msg=(d.get('message')||'').trim();
-      if(!name||!msg||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){show('inv');return}
+      var data={name:(d.get('name')||'').trim(),email:(d.get('email')||'').trim(),company:(d.get('company')||'').trim(),message:(d.get('message')||'').trim(),_honey:d.get('_honey')||''};
+      if(!data.name||!data.message||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)){show('inv');return}
       form.classList.add('sending');show('none');
-      if(mailBtn){mailBtn.href='mailto:'+TO+'?subject='+encodeURIComponent('Contacto desde agrochaintech.com — '+name)+'&body='+encodeURIComponent(msg+'\n\n'+name+(company?' · '+company:'')+'\n'+email)}
-      send({name:name,email:email,company:company,message:msg,_replyto:email,
-            _subject:'Nuevo mensaje desde agrochaintech.com — '+name,_template:'table',_captcha:'false'},3)
-      .then(function(ok){if(ok){form.reset();show('ok')}else show('err')})
-      .then(function(){form.classList.remove('sending')});
+      fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+        .then(function(r){return r.json().catch(function(){return {}})})
+        .then(function(j){if(j.ok){form.reset();show('ok')}else show(j.error==='invalid'?'inv':'err')})
+        .catch(function(){show('err')})
+        .then(function(){form.classList.remove('sending')});
     });
   }
 
@@ -224,23 +209,23 @@
       var mn=Math.min.apply(null,arr),mx=Math.max.apply(null,arr),r=mx-mn||1;
       return arr.map(function(v,i){return (i?'L':'M')+(i*(w/(arr.length-1))).toFixed(1)+' '+(h-2-(v-mn)/r*(h-4)).toFixed(1)}).join(' ');
     }
-    function loop(row,html){
+    function loop(row,html,pps){
       var tr=row.querySelector('.mtrack');tr.innerHTML='<div class="mset">'+html+'</div><div class="mset" aria-hidden="true">'+html+'</div>';
       tr.querySelectorAll('.mset[aria-hidden] a, .mset[aria-hidden] button').forEach(function(e){e.tabIndex=-1});
-      var w=tr.querySelector('.mset').scrollWidth;tr.style.setProperty('--dur',Math.max(30,w/45)+'s');row.hidden=false;
+      var w=tr.querySelector('.mset').scrollWidth;tr.style.setProperty('--dur',Math.max(40,w/(pps||30))+'s');row.hidden=false;
     }
     function drawPrices(){
       if(!MK.length)return;
       loop(band.querySelector('.mprices'),MK.map(function(m,i){
         var up=m.change>=0,cls=m.change===0?'eq':up?'up':'dn';
         return '<button type="button" class="mi '+cls+'" data-i="'+i+'"><b>'+esc2(isEs()?m.es:m.en)+'</b><span class="mv">'+fmt(m.price,m.unit)+'</span><span class="mc">'+(up?'▲':'▼')+' '+Math.abs(m.pct).toFixed(2)+'%</span><svg viewBox="0 0 60 20" aria-hidden="true"><path d="'+spark(m.series,60,20)+'"/></svg></button>';
-      }).join(''));
+      }).join(''),32);
       band.querySelectorAll('.mprices .mi').forEach(function(b){b.addEventListener('click',function(){openPanel(+b.dataset.i)})});
     }
     function drawNews(){
       if(!NW.length)return;
       var L=NW.filter(function(i){return i.lang===(isEs()?'es':'en')}).slice(0,12);if(!L.length)L=NW.slice(0,12);
-      loop(band.querySelector('.mnews'),L.map(function(i){return '<a class="mi" href="'+esc2(i.link)+'" target="_blank" rel="noopener"><span class="msrc">'+esc2(i.source)+'</span>'+esc2(i.title)+'</a>'}).join(''));
+      loop(band.querySelector('.mnews'),L.map(function(i){return '<a class="mi" href="'+esc2(i.link)+'" target="_blank" rel="noopener"><span class="msrc">'+esc2(i.source)+'</span>'+esc2(i.title)+'</a>'}).join(''),16);
     }
     var panel=band.querySelector('.mpanel'),openI=-1;
     function openPanel(i){
