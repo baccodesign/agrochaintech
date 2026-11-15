@@ -234,7 +234,7 @@
     function drawNews(){
       if(!NW.length)return;
       var L=NW.filter(function(i){return i.lang===(isEs()?'es':'en')}).slice(0,12);if(!L.length)L=NW.slice(0,12);
-      loop(band.querySelector('.mnews'),L.map(function(i){return '<a class="mi" href="'+esc2(i.link)+'" target="_blank" rel="noopener"><span class="msrc">'+esc2(i.source)+'</span>'+esc2(i.title)+'</a>'}).join(''),16);
+      loop(band.querySelector('.mnews'),L.map(function(i){return '<a class="mi" href="'+esc2(i.link)+'" target="_blank" rel="noopener"><span class="msrc">'+esc2(i.source)+'</span>'+esc2(i.title)+'</a>'}).join(''),11);
     }
     var panel=band.querySelector('.mpanel'),openI=-1;
     function openPanel(i){
