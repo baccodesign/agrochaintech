@@ -103,7 +103,7 @@
     if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(es[0].isIntersecting&&!pex.dataset.started){pex.dataset.started='1';restart()}},{threshold:.4}).observe(pex)}
   }
 
-  /* formulario de contacto → /api/contact (Cloudflare) → correo de AgroChain */
+  /* formulario de contacto → FormSubmit → correo de AgroChain (copia a Jorge) */
   var form=document.getElementById('cform');
   if(form){
     function show(c){form.querySelectorAll('.fmsg').forEach(function(m){m.hidden=!m.classList.contains(c)})}
@@ -113,12 +113,21 @@
       if(form.classList.contains('sending'))return;
       var d=new FormData(form);
       var data={name:(d.get('name')||'').trim(),email:(d.get('email')||'').trim(),company:(d.get('company')||'').trim(),message:(d.get('message')||'').trim(),_honey:d.get('_honey')||''};
+      if(data._honey)return;
       if(!data.name||!data.message||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)){show('inv');return}
       form.classList.add('sending');show('none');
-      fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-        .then(function(r){return r.json().catch(function(){return {}})})
-        .then(function(j){if(j.ok){form.reset();show('ok')}else show(j.error==='invalid'?'inv':'err')})
-        .catch(function(){show('err')})
+      // Envío directo desde el navegador del visitante (FormSubmit). Destino: cuenta de AgroChain + copia a Jorge.
+      var EP=['adrianasotonegron','gmail.com'].join('@'),CC=['gonzalezjorge72','yahoo.com'].join('@');
+      var payload={name:data.name,email:data.email,company:data.company,message:data.message,_replyto:data.email,_cc:CC,
+        _subject:'Nuevo mensaje desde agrochaintech.com — '+data.name,_template:'table',_captcha:'false'};
+      function attempt(n){
+        return fetch('https://formsubmit.co/ajax/'+EP,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+          .then(function(r){return r.text().then(function(t){var j={};try{j=JSON.parse(t)}catch(e){}return {s:r.status,j:j}})})
+          .then(function(r){if(String(r.j.success)==='true')return {ok:true};if((r.s>=500||!r.s)&&n>1)return new Promise(function(res){setTimeout(res,1200)}).then(function(){return attempt(n-1)});if(window.console)console.warn('Contact form:',r.s,r.j&&r.j.message);return {ok:false}},
+                function(){return n>1?new Promise(function(res){setTimeout(res,1200)}).then(function(){return attempt(n-1)}):{ok:false}});
+      }
+      attempt(3)
+        .then(function(j){if(j.ok){form.reset();show('ok')}else show('err')})
         .then(function(){form.classList.remove('sending')});
     });
   }
