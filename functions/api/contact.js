@@ -32,12 +32,12 @@ export async function onRequestPost({ request, env }) {
         body: JSON.stringify(payload),
         signal: AbortSignal.timeout(10000),
       });
-      const t = await r.text(); let j = {}; try { j = JSON.parse(t); } catch (e) {}
+      const t = await r.text(); let j = {}; try { j = JSON.parse(t); } catch (e) { j = { message: 'HTTP ' + r.status + ' ' + t.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').slice(0, 160) }; }
       if (String(j.success) === 'true') return json({ ok: true });
       last = j.message || ('HTTP ' + r.status);
       if (r.status < 500) break;                                  // error definitivo (p. ej. falta activar)
     } catch (e) { last = String(e); }
     await new Promise((res) => setTimeout(res, 1200));
   }
-  return json({ ok: false, error: /activ/i.test(last) ? 'not_activated' : 'send_failed' }, 502);
+  return json({ ok: false, error: /activ/i.test(last) ? 'not_activated' : 'send_failed', detail: String(last).replace(/[^\s@]+@[^\s@]+/g, '…').slice(0, 300) }, 502);
 }
