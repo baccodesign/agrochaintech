@@ -228,13 +228,13 @@
       loop(band.querySelector('.mprices'),MK.map(function(m,i){
         var up=m.change>=0,cls=m.change===0?'eq':up?'up':'dn';
         return '<button type="button" class="mi '+cls+'" data-i="'+i+'"><b>'+esc2(isEs()?m.es:m.en)+'</b><span class="mv">'+fmt(m.price,m.unit)+'</span><span class="mc">'+(up?'▲':'▼')+' '+Math.abs(m.pct).toFixed(2)+'%</span><svg viewBox="0 0 60 20" aria-hidden="true"><path d="'+spark(m.series,60,20)+'"/></svg></button>';
-      }).join(''),32);
+      }).join(''),40);
       band.querySelectorAll('.mprices .mi').forEach(function(b){b.addEventListener('click',function(){openPanel(+b.dataset.i)})});
     }
     function drawNews(){
       if(!NW.length)return;
       var L=NW.filter(function(i){return i.lang===(isEs()?'es':'en')}).slice(0,12);if(!L.length)L=NW.slice(0,12);
-      loop(band.querySelector('.mnews'),L.map(function(i){return '<a class="mi" href="'+esc2(i.link)+'" target="_blank" rel="noopener"><span class="msrc">'+esc2(i.source)+'</span>'+esc2(i.title)+'</a>'}).join(''),11);
+      loop(band.querySelector('.mnews'),L.map(function(i){return '<a class="mi" href="'+esc2(i.link)+'" target="_blank" rel="noopener"><span class="msrc">'+esc2(i.source)+'</span>'+esc2(i.title)+'</a>'}).join(''),14);
     }
     var panel=band.querySelector('.mpanel'),openI=-1;
     function openPanel(i){
