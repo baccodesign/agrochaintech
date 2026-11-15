@@ -14,7 +14,7 @@
 <link rel="icon" href="/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/v3.css?v=6">
+<link rel="stylesheet" href="/assets/v3.css?v=7">
 <script>(function(){var l;try{l=new URLSearchParams(location.search).get('lang')||sessionStorage.getItem('agro-lang')}catch(e){}if(!l)l='en';document.documentElement.lang=l==='es'?'es':'en';window.__T={en:"About Us | AgroChain Technologies",es:"Empresa | AgroChain Technologies"};if(l==='es')document.title=__T.es})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "AgroChain Technologies", "url": "https://www.agrochaintech.com/", "logo": "https://www.agrochaintech.com/img/logo-agrochain.png", "description": "Tomorrow's Agriculture Starts Today. AgroChain Technologies' mission and values."}</script>
 </head>
@@ -26,7 +26,7 @@
     <a href="/"><span class="en" lang="en">Home</span><span class="es" lang="es">Principal</span></a>
     <a href="/company" aria-current="page"><span class="en" lang="en">About us</span><span class="es" lang="es">Empresa</span></a>
     <a href="/technology"><span class="en" lang="en">Technology</span><span class="es" lang="es">Tecnología</span></a>
-    <a href="/news"><span class="en" lang="en">Blog entries</span><span class="es" lang="es">Noticias</span></a>
+    <a href="/news"><span class="en" lang="en">News</span><span class="es" lang="es">Noticias</span></a>
   </nav>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="en" aria-label="English">EN</button><button type="button" data-lang="es" aria-label="Español">ES</button></div>
   <a class="cta" href="#contact"><span class="en" lang="en">Contact us</span><span class="es" lang="es">Contáctenos</span></a>
@@ -61,6 +61,22 @@
 </section>
 </main>
 
+    <button type="button" class="lb-p" aria-label="Previous project">←</button>
+    <figure><img src="" alt=""><figcaption></figcaption></figure>
+    <button type="button" class="lb-n" aria-label="Next project">→</button>
+  </dialog>
+</section>
+
+<!-- 7 · ALIADOS (marquesina) -->
+<section class="partners" aria-label="Partners">
+  <span class="mono"><span class="en" lang="en">Partners</span><span class="es" lang="es">Aliados</span></span>
+  <div class="marq"><div class="track">
+    <div class="logo-tile"><img src="/img/partner-colegio.png" alt="Colegio de Ingenieros de Venezuela" loading="lazy"></div><div class="logo-tile"><img src="/img/partner-luz.png" alt="Universidad del Zulia" loading="lazy"></div><div class="logo-tile"><img src="/img/partner-asociaa.jpg" alt="ASOCIAA" loading="lazy"></div><div class="logo-tile"><img src="/img/partner-fa.jpg" alt="Facultad de Agronomía LUZ" loading="lazy"></div><div class="logo-tile"><img src="/img/partner-ethereum.png" alt="Ethereum" loading="lazy"></div><div class="logo-tile"><img src="/img/partner-scm.png" alt="SCM Supply Chain Management" loading="lazy"></div><div class="logo-tile"><img src="/img/partner-ascm.png" alt="Association for Supply Chain Management" loading="lazy"></div><div class="logo-tile"><img src="/img/partner-alv.png" alt="Asociación de Logística de Venezuela" loading="lazy"></div><div class="logo-tile"><img src="/img/partner-blockchain.png" alt="Blockchain" loading="lazy"></div><div class="logo-tile"><img src="/img/partner-ssol.jpg" alt="Supply Chain Internet-Powered Solutions" loading="lazy"></div>
+    <div class="logo-tile" aria-hidden="true"><img src="/img/partner-colegio.png" alt="" loading="lazy"></div><div class="logo-tile" aria-hidden="true"><img src="/img/partner-luz.png" alt="" loading="lazy"></div><div class="logo-tile" aria-hidden="true"><img src="/img/partner-asociaa.jpg" alt="" loading="lazy"></div><div class="logo-tile" aria-hidden="true"><img src="/img/partner-fa.jpg" alt="" loading="lazy"></div><div class="logo-tile" aria-hidden="true"><img src="/img/partner-ethereum.png" alt="" loading="lazy"></div><div class="logo-tile" aria-hidden="true"><img src="/img/partner-scm.png" alt="" loading="lazy"></div><div class="logo-tile" aria-hidden="true"><img src="/img/partner-ascm.png" alt="" loading="lazy"></div><div class="logo-tile" aria-hidden="true"><img src="/img/partner-alv.png" alt="" loading="lazy"></div><div class="logo-tile" aria-hidden="true"><img src="/img/partner-blockchain.png" alt="" loading="lazy"></div><div class="logo-tile" aria-hidden="true"><img src="/img/partner-ssol.jpg" alt="" loading="lazy"></div>
+  </div></div>
+</section>
+</main>
+
 <!-- 8 · CONTACTO -->
 <footer class="foot" id="contact">
   <div class="wrap">
@@ -78,22 +94,6 @@
             <label for="cf-email"><span class="en" lang="en">Email</span><span class="es" lang="es">Correo</span><input id="cf-email" name="email" type="email" autocomplete="email" required></label>
           </div>
           <label for="cf-company"><span><span class="en" lang="en">Company</span><span class="es" lang="es">Empresa</span> <em><span class="en" lang="en">(optional)</span><span class="es" lang="es">(opcional)</span></em></span><input id="cf-company" name="company" type="text" autocomplete="organization"></label>
-          <label for="cf-msg"><span class="en" lang="en">Message</span><span class="es" lang="es">Mensaje</span><textarea id="cf-msg" name="message" rows="4" required></textarea></label>
-          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn btn-lime" type="submit"><span class="lbl-send"><span class="en" lang="en">Send message</span><span class="es" lang="es">Enviar mensaje</span></span><span class="lbl-wait"><span class="en" lang="en">Sending…</span><span class="es" lang="es">Enviando…</span></span><span class="arr" aria-hidden="true">→</span></button>
-          <p class="fmsg ok" role="status" hidden><span class="en" lang="en">Thank you! Your message was sent. We will get back to you soon.</span><span class="es" lang="es">¡Gracias! Su mensaje fue enviado. Le responderemos pronto.</span></p>
-          <p class="fmsg err" role="alert" hidden><span class="en" lang="en">We could not send your message from the website. You can send it directly from your email with the button below.</span><span class="es" lang="es">No pudimos enviar su mensaje desde la web. Puede enviarlo directamente desde su correo con el botón de abajo.</span></p>
-          <a class="btn btn-line fmail" href="#" hidden><span class="en" lang="en">Send from my email app</span><span class="es" lang="es">Enviar desde mi correo</span></a>
-          <p class="fmsg inv" role="alert" hidden><span class="en" lang="en">Please fill in your name, a valid email and your message.</span><span class="es" lang="es">Complete su nombre, un correo válido y su mensaje.</span></p>
-        </form>
-      </div>
-    </div>
-    <div class="fbar">
-      <nav aria-label="Footer"><a href="/"><span class="en" lang="en">HOME</span><span class="es" lang="es">PRINCIPAL</span></a><a href="/company"><span class="en" lang="en">ABOUT US</span><span class="es" lang="es">EMPRESA</span></a><a href="/technology"><span class="en" lang="en">TECHNOLOGY</span><span class="es" lang="es">TECNOLOGÍA</span></a><a href="/news"><span class="en" lang="en">BLOG ENTRIES</span><span class="es" lang="es">NOTICIAS</span></a></nav>
-      <div><span class="en" lang="en">© <span class="yr">2026</span> by AgroChain Technologies.</span><span class="es" lang="es">© <span class="yr">2026</span> por AgroChain Technologies.</span></div>
-    </div>
-  </div>
-  <div class="giant" aria-hidden="true">AgroChain</div>
-<script src="/assets/v3.js?v=6" defer></script>
+<script src="/assets/v3.js?v=7" defer></script>
 </body>
 </html>

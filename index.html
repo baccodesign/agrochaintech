@@ -14,7 +14,7 @@
 <link rel="icon" href="/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/v3.css?v=6">
+<link rel="stylesheet" href="/assets/v3.css?v=7">
 <script>(function(){var l;try{l=new URLSearchParams(location.search).get('lang')||sessionStorage.getItem('agro-lang')}catch(e){}if(!l)l='en';document.documentElement.lang=l==='es'?'es':'en';window.__T={en:"AgroChain Technologies | Traceability & Supply Chain Digitalization",es:"AgroChain Technologies | Trazabilidad y Digitalización de la Cadena de Suministro"};if(l==='es')document.title=__T.es})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "AgroChain Technologies", "url": "https://www.agrochaintech.com/", "logo": "https://www.agrochaintech.com/img/logo-agrochain.png", "description": "AgroChain Technologies: end-to-end traceability and supply chain digitalization with Blockchain — the Smart Supply Chain (SSC) platform."}</script>
 </head>
@@ -26,7 +26,7 @@
     <a href="/" aria-current="page"><span class="en" lang="en">Home</span><span class="es" lang="es">Principal</span></a>
     <a href="/company"><span class="en" lang="en">About us</span><span class="es" lang="es">Empresa</span></a>
     <a href="/technology"><span class="en" lang="en">Technology</span><span class="es" lang="es">Tecnología</span></a>
-    <a href="/news"><span class="en" lang="en">Blog entries</span><span class="es" lang="es">Noticias</span></a>
+    <a href="/news"><span class="en" lang="en">News</span><span class="es" lang="es">Noticias</span></a>
   </nav>
   <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="en" aria-label="English">EN</button><button type="button" data-lang="es" aria-label="Español">ES</button></div>
   <a class="cta" href="#contact"><span class="en" lang="en">Contact us</span><span class="es" lang="es">Contáctenos</span></a>
@@ -63,10 +63,26 @@
   </div>
 </section>
 
-<div class="ticker" aria-hidden="true"><div class="track">
-  <span class="en" lang="en">Raw materials</span><span class="es" lang="es">Materias primas</span><span class="en" lang="en">Manufacturing</span><span class="es" lang="es">Fabricación</span><span class="en" lang="en">Distribution and warehouses</span><span class="es" lang="es">Distribución y almacenes</span><span class="en" lang="en">Consumption</span><span class="es" lang="es">Consumo</span><span>Ethereum Blockchain</span><span>Smart Supply Chain (SSC)</span>
-  <span class="en" lang="en">Raw materials</span><span class="es" lang="es">Materias primas</span><span class="en" lang="en">Manufacturing</span><span class="es" lang="es">Fabricación</span><span class="en" lang="en">Distribution and warehouses</span><span class="es" lang="es">Distribución y almacenes</span><span class="en" lang="en">Consumption</span><span class="es" lang="es">Consumo</span><span>Ethereum Blockchain</span><span>Smart Supply Chain (SSC)</span>
-</div></div>
+<section class="mband" aria-label="Agricultural markets and news">
+  <div class="mrow mprices" hidden>
+    <div class="mlabel"><span class="mdot" aria-hidden="true"></span><b><span class="en" lang="en">Ag markets</span><span class="es" lang="es">Mercados agrícolas</span></b><small><span class="en" lang="en">Futures · delayed</span><span class="es" lang="es">Futuros · con retraso</span></small></div>
+    <div class="mview"><div class="mtrack"></div></div>
+    <button type="button" class="mpause" aria-pressed="false" aria-label="Pause / Pausar"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+  </div>
+  <div class="mpanel" hidden>
+    <div class="wrap mp-in">
+      <div class="mp-h"><span class="mono mp-sym"></span><h3 class="mp-name"></h3><div class="mp-price"></div></div>
+      <svg class="mp-chart" viewBox="0 0 600 160" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <dl class="mp-stats"></dl>
+      <button type="button" class="mp-x" aria-label="Close / Cerrar">✕</button>
+    </div>
+  </div>
+  <div class="mrow mnews" hidden>
+    <div class="mlabel"><span class="mdot red" aria-hidden="true"></span><b><span class="en" lang="en">News</span><span class="es" lang="es">Noticias</span></b><small><span class="en" lang="en">Live</span><span class="es" lang="es">En vivo</span></small></div>
+    <div class="mview"><div class="mtrack"></div></div>
+    <a class="mall" href="/news#radar"><span class="en" lang="en">All news</span><span class="es" lang="es">Ver todas</span> →</a>
+  </div>
+</section>
 
 <!-- 2 · HISTORIA -->
 <section class="story sec" id="about">
@@ -250,12 +266,12 @@
       </div>
     </div>
     <div class="fbar">
-      <nav aria-label="Footer"><a href="/"><span class="en" lang="en">HOME</span><span class="es" lang="es">PRINCIPAL</span></a><a href="/company"><span class="en" lang="en">ABOUT US</span><span class="es" lang="es">EMPRESA</span></a><a href="/technology"><span class="en" lang="en">TECHNOLOGY</span><span class="es" lang="es">TECNOLOGÍA</span></a><a href="/news"><span class="en" lang="en">BLOG ENTRIES</span><span class="es" lang="es">NOTICIAS</span></a></nav>
+      <nav aria-label="Footer"><a href="/"><span class="en" lang="en">HOME</span><span class="es" lang="es">PRINCIPAL</span></a><a href="/company"><span class="en" lang="en">ABOUT US</span><span class="es" lang="es">EMPRESA</span></a><a href="/technology"><span class="en" lang="en">TECHNOLOGY</span><span class="es" lang="es">TECNOLOGÍA</span></a><a href="/news"><span class="en" lang="en">NEWS</span><span class="es" lang="es">NOTICIAS</span></a></nav>
       <div><span class="en" lang="en">© <span class="yr">2026</span> by AgroChain Technologies.</span><span class="es" lang="es">© <span class="yr">2026</span> por AgroChain Technologies.</span></div>
     </div>
   </div>
   <div class="giant" aria-hidden="true">AgroChain</div>
 </footer>
-<script src="/assets/v3.js?v=6" defer></script>
+<script src="/assets/v3.js?v=7" defer></script>
 </body>
 </html>
