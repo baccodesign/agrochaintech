@@ -54,12 +54,75 @@
   if(reduce)wrap.classList.add('paused');
   show(0);
 
-  /* galería de proyectos: flechas y arrastre */
-  var rail=document.querySelector('.rail');
-  document.querySelectorAll('.ctrl button').forEach(function(b){b.addEventListener('click',function(){rail.scrollBy({left:(+b.dataset.dir)*rail.clientWidth*.7,behavior:reduce?'auto':'smooth'})})});
-  var down=false,sx,sl,moved;
-  rail.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=rail.scrollLeft;rail.classList.add('drag')});
-  addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>3)moved=true;rail.scrollLeft=sl-dx});
-  addEventListener('pointerup',function(){if(down){down=false;rail.classList.remove('drag')}});
-  rail.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation()}},true);
+  /* año del copyright: se actualiza solo */
+  var y=new Date().getFullYear();
+  document.querySelectorAll('.yr').forEach(function(e){e.textContent=y});
+
+  /* proyectos: explorador + filtros + pantalla completa */
+  var pex=document.querySelector('.pex');
+  if(pex){
+    var imgs=[].slice.call(pex.querySelectorAll('.stage-imgs img')),caps=[].slice.call(pex.querySelectorAll('.cap')),
+        btns=[].slice.call(pex.querySelectorAll('.pi')),count=pex.querySelector('.count b'),prog=pex.querySelector('.prog i'),
+        cur=0,timer=null,DUR=6000;
+    function visible(){return btns.filter(function(b){return !b.parentNode.hidden}).map(function(b){return +b.dataset.i})}
+    function go(i,user){
+      cur=i;
+      imgs.forEach(function(e){e.classList.toggle('on',+e.dataset.i===i)});
+      caps.forEach(function(e){e.classList.toggle('on',+e.dataset.i===i)});
+      btns.forEach(function(e){var on=+e.dataset.i===i;e.classList.toggle('on',on);e.setAttribute('aria-pressed',on)});
+      count.textContent=('0'+(i+1)).slice(-2);
+      if(user)stop();else restart();
+    }
+    function step(d){var v=visible(),k=v.indexOf(cur);go(v[(k+d+v.length)%v.length],true)}
+    function restart(){if(reduce||pex.dataset.stopped)return;clearTimeout(timer);prog.style.animation='none';void prog.offsetWidth;prog.style.animation='';
+      timer=setTimeout(function(){var v=visible(),k=v.indexOf(cur);go(v[(k+1)%v.length])},DUR)}
+    function stop(){pex.dataset.stopped='1';clearTimeout(timer);pex.classList.add('stopped')}
+    btns.forEach(function(b){b.addEventListener('click',function(){go(+b.dataset.i,true)})});
+    pex.querySelector('.prev').addEventListener('click',function(){step(-1)});
+    pex.querySelector('.next').addEventListener('click',function(){step(1)});
+    pex.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){step(1);e.preventDefault()}else if(e.key==='ArrowLeft'){step(-1);e.preventDefault()}});
+    var tx=null,st=pex.querySelector('.stage');
+    st.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+    st.addEventListener('touchend',function(e){if(tx===null)return;var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>40)step(d<0?1:-1);tx=null});
+    document.querySelectorAll('.pfilter button').forEach(function(f){f.addEventListener('click',function(){
+      document.querySelectorAll('.pfilter button').forEach(function(o){o.setAttribute('aria-pressed',o===f)});
+      btns.forEach(function(b){var li=b.parentNode;li.hidden=!(f.dataset.f==='all'||li.dataset.g===f.dataset.f)});
+      go(visible()[0],true);
+    })});
+    /* pantalla completa */
+    var lb=document.querySelector('.lb'),lbi=lb.querySelector('img'),lbc=lb.querySelector('figcaption');
+    function fill(){var im=imgs[cur];lbi.src=im.src;lbi.alt=im.alt;lbc.innerHTML=caps[cur].innerHTML}
+    pex.querySelector('.zoom').addEventListener('click',function(){stop();fill();if(lb.showModal)lb.showModal();else lb.setAttribute('open','')});
+    st.querySelector('.stage-imgs').addEventListener('click',function(){pex.querySelector('.zoom').click()});
+    lb.querySelector('.lb-x').addEventListener('click',function(){lb.close?lb.close():lb.removeAttribute('open')});
+    lb.querySelector('.lb-p').addEventListener('click',function(){step(-1);fill()});
+    lb.querySelector('.lb-n').addEventListener('click',function(){step(1);fill()});
+    lb.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){step(1);fill()}else if(e.key==='ArrowLeft'){step(-1);fill()}});
+    lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+    var lx=null;lb.addEventListener('touchstart',function(e){lx=e.touches[0].clientX},{passive:true});
+    lb.addEventListener('touchend',function(e){if(lx===null)return;var d=e.changedTouches[0].clientX-lx;if(Math.abs(d)>40){step(d<0?1:-1);fill()}lx=null});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(es[0].isIntersecting&&!pex.dataset.started){pex.dataset.started='1';restart()}},{threshold:.4}).observe(pex)}
+  }
+
+  /* formulario de contacto (FormSubmit → correo de AgroChain) */
+  var form=document.getElementById('cform');
+  if(form){
+    var TO='gonzalezjorge72'+'@'+'yahoo.com';
+    function show(c){form.querySelectorAll('.fmsg').forEach(function(m){m.hidden=!m.classList.contains(c)})}
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var d=new FormData(form);
+      if(d.get('_honey'))return;
+      var name=(d.get('name')||'').trim(),email=(d.get('email')||'').trim(),msg=(d.get('message')||'').trim();
+      if(!name||!msg||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){show('inv');return}
+      form.classList.add('sending');show('none');
+      fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({name:name,email:email,company:(d.get('company')||'').trim(),message:msg,
+          _subject:'Nuevo mensaje desde agrochaintech.com — '+name,_template:'table',_captcha:'false',_honey:''})})
+      .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
+      .then(function(r){if(r.ok&&String(r.j.success)==='true'){form.reset();show('ok')}else{show('err')}})
+      .catch(function(){show('err')})
+      .then(function(){form.classList.remove('sending')});
+    });
+  }
 })();
