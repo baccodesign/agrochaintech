@@ -116,8 +116,8 @@
       if(data._honey)return;
       if(!data.name||!data.message||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)){show('inv');return}
       form.classList.add('sending');show('none');
-      // Envío directo desde el navegador del visitante (FormSubmit). Destino: cuenta de AgroChain + copia a Jorge.
-      var EP=['adrianasotonegron','gmail.com'].join('@'),CC=['gonzalezjorge72','yahoo.com'].join('@');
+      // Envío directo desde el navegador del visitante (FormSubmit). Destino: BACCO Design + copia a Adriana.
+      var EP=['infobaccodesign','gmail.com'].join('@'),CC=['adrianasotonegron','gmail.com'].join('@');
       var payload={name:data.name,email:data.email,company:data.company,message:data.message,_replyto:data.email,_cc:CC,
         _subject:'Nuevo mensaje desde agrochaintech.com — '+data.name,_template:'table',_captcha:'false'};
       function attempt(n){
