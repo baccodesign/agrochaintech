@@ -51,8 +51,7 @@
     s.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){wrap.classList.add('paused');var n=(i+d+steps.length)%steps.length;show(n);steps[n].focus()}});
     s.querySelector('.bar').addEventListener('animationend',function(){if(!wrap.classList.contains('paused'))show((i+1)%steps.length)});
   });
-  if(reduce)wrap.classList.add('paused');
-  show(0);
+  if(wrap){if(reduce)wrap.classList.add('paused');show(0)}
 
   /* año del copyright: se actualiza solo */
   var y=new Date().getFullYear();
